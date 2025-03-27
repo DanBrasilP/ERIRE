@@ -94,6 +94,7 @@ A teoria ERIЯƎ foi formalizada em diversos artigos que abordam desde sua funda
 
 ## **🔬 Impacto e Possíveis Aplicações**
 A ERIЯƎ pode ter aplicações em diversas áreas da matemática e ciência computacional:
+
 ✅ **Computação Algébrica** → Manipulação avançada de funções complexas e hipercomplexas.  
 ✅ **Física Quântica** → Modelagem de operadores ressonantes para manipulação de estados quânticos.  
 ✅ **Geometria e Modelagem 3D** → Alternativa para transformações complexas e hipercomplexas.  
@@ -111,7 +112,7 @@ Este repositório representa um esforço colaborativo em conjunto com **ChatGPT*
 
 ## **📌 Como Citar este Trabalho**
 Se você deseja citar a **Teoria ERIЯƎ**, utilize o seguinte formato:
-DanBrasilP, ChatGPT. "Teoria ERIЯƎ - Exponencialização e Racionalização Imaginária Rotacional Evolutiva." GitHub, 2024.
+DanBrasilP, ChatGPT. "Teoria ERIЯƎ - Exponencialização e Racionalização Imaginária Rotacional Evolutiva." GitHub, 2025.
 
 🔗 **Repositório Oficial**: https://github.com/DanBrasilP/ERIRE
 
