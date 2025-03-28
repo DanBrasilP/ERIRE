@@ -14,7 +14,7 @@ A implementação computacional da ERIЯƎ pode ser dividida em **três níveis 
 A raiz imaginária \( \sqrt[i]{z} \), conforme definida na ERIЯƎ, pode ser computada através da seguinte expressão:
 
 \[
-\sqrt[i]{z} = e^{i (\ln z) / 2}
+\sqrt[i]{z} = z^{1/i} = e^{-i \ln z}
 \]
 
 Isso implica que qualquer número real ou complexo pode ser transformado em sua **versão ressonante rotacional** por meio de operações logarítmicas e exponenciais. 
@@ -25,11 +25,11 @@ Isso implica que qualquer número real ou complexo pode ser transformado em sua 
 As operações fundamentais da ERIЯƎ são **EIRE** (Exponencialização Imaginária Rotacional Evolutiva) e **RIRE** (Racionalização Imaginária Rotacional Evolutiva), definidas como:
 
 \[
-EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}
+EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 \[
-RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\theta + \pi / n)}
+RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 Essas funções permitem **automatizar operações da ERIЯƎ**, abrindo espaço para seu uso em **cálculo simbólico e computação científica**.

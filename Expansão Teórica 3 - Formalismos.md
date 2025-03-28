@@ -5,6 +5,18 @@ A **Teoria ERIЯƎ** (Exponencialização e Racionalização Imaginária Rotacio
 
 O propósito desta expansão teórica é formalizar os principais conceitos que sustentam a **ERIЯƎ**, corrigir ambiguidades potenciais e aprofundar sua aplicação em estruturas multidimensionais. A seguir, são abordados os fundamentos matemáticos, a relação entre as operações **EIRE** e **RIRE**, a formalização da reversibilidade, a justificativa para a fase \( \pi / n \), a conexão com o logaritmo complexo e uma abordagem multidimensional baseada em álgebra geométrica.
 
+## Tratamento Especial para Entrada Zero nas Operações EIRE e RIRE
+
+As operações fundamentais EIRE e RIRE dependem diretamente do logaritmo complexo, definido como:
+
+\[
+\ln z = \ln|z| + i \arg(z), \quad z \neq 0
+\]
+
+Por definição matemática rigorosa, o logaritmo complexo não está definido em zero. Consequentemente, as operações EIRE e RIRE **não são definidas para z = 0**, pois exigem explicitamente o uso do logaritmo complexo em suas definições fundamentais.
+
+Portanto, é necessário explicitar essa restrição, garantindo a robustez teórica e prática da teoria ERIЯƎ.
+
 ---
 
 ## **2. Estrutura Matemática da ERIЯƎ**
@@ -14,7 +26,7 @@ A teoria ERIЯƎ define duas operações fundamentais:
 A operação **EIRE** generaliza a exponencialização de números complexos e é definida por:
 
 \[
-EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}
+EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 onde:
@@ -33,7 +45,7 @@ A transformação **combina crescimento/decrescimento e rotação**, modificando
 A operação inversa, **RIRE**, introduz um mecanismo de estabilização ressonante e é definida por:
 
 \[
-RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\phi + \pi / n)}
+RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 onde:
@@ -58,13 +70,10 @@ Para verificar essa relação, consideremos a aplicação sucessiva das operaç�
    \]
 
 2. **Aplicando RIRE sobre EIRE**:
-   \[
-   RIRE(EIRE(z, m), n) = \left(e^{i m \ln z}\right)^{1/(n i)} e^{i \pi / n}
+   \[ 
+      RIRE(EIRE(z, m), n) = \left(e^{i m \ln z}\right)^{1/(n i)} = e^{(i m \ln z)/(n i)} = e^{(m \ln z)/n} 
    \]
-
-   \[
-   = e^{(i m \ln z)/(n i)} e^{i \pi / n} = e^{(m \ln z)/n} e^{i \pi / n}
-   \]
+   (Nota: A simetria \( = z \) só é válida se \( m = n \) e o ramo do logaritmo for consistente.)
 
 Para que \( RIRE(EIRE(z, m), n) = z \), é necessário ajustar a relação entre \( m \) e \( n \), garantindo que **o fator de compensação rotacional preserve a coerência da transformação**.
 

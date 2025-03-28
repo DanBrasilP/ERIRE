@@ -11,6 +11,18 @@ RIRE(EIRE(z, m), n) = z
 
 Nesta expansão teórica, apresentamos uma **prova formal** dessa identidade, garantindo **consistência matemática** e **compatibilidade com estruturas algébricas convencionais**.
 
+## Condições Necessárias para a Simetria Exata entre EIRE e RIRE
+
+A simetria fundamental estabelecida pela ERIЯƎ é dada por:
+
+\[
+RIRE(EIRE(z, m), n) = z
+\]
+
+Contudo, é essencial destacar que essa relação de simetria exata só se verifica quando as condições \( m = n \) são rigorosamente satisfeitas. Caso contrário, a operação composta \( RIRE(EIRE(z, m), n) \) não resulta exatamente no valor original \( z \), indicando que pequenas divergências numéricas e conceituais são esperadas se \( m \neq n \).
+
+Essa condição é fundamental para garantir a coerência interna da teoria e deve ser respeitada tanto em contextos teóricos quanto em implementações práticas.
+
 ---
 
 ## **2. Definição Formal de EIRE e RIRE**
@@ -20,7 +32,7 @@ Antes de demonstrarmos a relação entre **EIRE e RIRE**, revisamos suas defini�
 A operação **EIRE** é definida como:
 
 \[
-EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}
+EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 onde:
@@ -40,7 +52,7 @@ Isso demonstra que **EIRE** aplica um fator de crescimento rotacional ao número
 A **RIRE** é definida como a inversa da **EIRE**, e sua expressão é dada por:
 
 \[
-RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\phi + \pi / n)}
+RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 onde:
@@ -83,37 +95,37 @@ RIRE(EIRE(z, m), n) = \sqrt[n \cdot i]{EIRE(z, m)}
 Expandindo a expressão de **RIRE**:
 
 \[
-RIRE(EIRE(z, m), n) = \left( r^{i m} e^{i m \ln r} e^{-m\phi} \right)^{1/(n i)} e^{i \pi / n}
+RIRE(EIRE(z, m), n) = \left( r^{i m} e^{i m \ln r} e^{-m\phi} \right)^{1/(n i)}
 \]
 
 Distribuindo o expoente \( 1/(n i) \):
 
 \[
-= r^{i m / (n i)} e^{(i m \ln r) / (n i)} e^{-m\phi / (n i)} e^{i \pi / n}
+= r^{i m / (n i)} e^{(i m \ln r) / (n i)} e^{-m\phi / (n i)}
 \]
 
 Como \( i^2 = -1 \), simplificamos os expoentes:
 
 \[
-= r^{m / n} e^{-m \ln r / n} e^{m\phi / n} e^{i \pi / n}
+= r^{m / n} e^{-m \ln r / n} e^{m\phi / n}
 \]
 
 O termo \( e^{-m \ln r / n} \) cancela \( r^{m / n} \), e obtemos:
 
 \[
-= e^{m\phi / n} e^{i \pi / n}
+= e^{m\phi / n}
 \]
 
 Agora, utilizando a propriedade da função exponencial:
 
 \[
-e^{m\phi / n} e^{i \pi / n} = e^{(m\phi + i \pi) / n}
+e^{m\phi / n} = z^{m / n}
 \]
 
 Se \( n = m \), o argumento retorna ao valor original de \( z \), garantindo:
 
 \[
-RIRE(EIRE(z, m), n) = z
+RIRE(EIRE(z, m), m) = z
 \]
 
 Isso demonstra formalmente que **EIRE e RIRE são operações inversas**, garantindo **coerência estrutural e reversibilidade**.
@@ -139,8 +151,9 @@ A generalização pode ser feita substituindo o operador exponencial por **matri
 \]
 
 \[
-\mathbf{RIRE}_n (\mathbf{z}, n) = \mathbf{R}_n^{-1}(n i) \cdot \mathbf{z}
+\mathbf{RIRE}_n (\mathbf{z}, n) = \mathbf{R}_n\left(-\frac{\arg z}{n}\right) \cdot \mathbf{z}
 \]
+(Nota: A matriz deve refletir a fase ajustada de \( z^{1/(n i)} \).)
 
 onde \( \mathbf{R}_n(m i) \) representa **uma matriz de rotação imaginária**, garantindo que a estrutura ERIЯƎ se mantenha consistente em qualquer número de dimensões.
 

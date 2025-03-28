@@ -34,7 +34,7 @@ O questionamento central da ERIЯƎ é: **as raízes imaginárias rotacionais in
 A ERIЯƎ introduz uma nova operação algébrica: **a raiz imaginária \( \sqrt[i]{z} \)**, definida como:
 
 \[
-\sqrt[i]{z} = e^{i (\ln z) / 2}
+\sqrt[i]{z} = z^{1/i} = e^{-i \ln z}
 \]
 
 Essa transformação leva um número real para **um espaço ressonante no plano complexo** e pode ser interpretada como **uma rotação de 90°** em um sistema tridimensional.
@@ -65,7 +65,7 @@ Isso pode levar a um **dobro de soluções** em relação ao teorema original, i
 No caso de uma raiz negativa, temos:
 
 \[
-\sqrt[i]{-x} = e^{i (\ln |x| + i\pi) / 2}
+\sqrt[i]{-x} = (-x)^{1/i} = e^{-i (\ln |x| + i\pi)}
 \]
 
 o que adiciona um **termo ressonante dependente da fase rotacional**, alterando **o comportamento das soluções complexas**.

@@ -24,7 +24,7 @@ A definição fundamental das operações segue a seguinte estrutura:
 A EIRE é definida como uma transformação sobre um número complexo **z**, produzindo um **estado projetado rotacionalmente** por um expoente imaginário **m*i**:
 
 \[
-EIRE(z, m) = z^{m * i} = e^{i m \ln z}
+EIRE(z, m) = z^{m * i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 Isso significa que a **Exponencialização Imaginária Rotacional Evolutiva** atua como **uma projeção ressonante**, alterando a distribuição da fase complexa em relação à estrutura oscilatória original de **z**.
@@ -33,8 +33,8 @@ Isso significa que a **Exponencialização Imaginária Rotacional Evolutiva** at
 
 A RIRE é a operação inversa da EIRE, correspondendo a um processo de **redução e estabilização** do estado complexo por meio de uma **raiz rotacional imaginária**:
 
-\[
-RIRE(z, n) = \sqrt[n * i]{z} = r^{1/n} e^{i (\phi + \pi / n)}
+\[ 
+    RIRE(z, n) = z^{1/(n * i)} = e^{(\ln z) / (n i)} 
 \]
 
 Isso significa que **a RIRE reduz a amplitude de z e aplica uma correção de fase fixa**, tornando-se a operação inversa natural da EIRE.

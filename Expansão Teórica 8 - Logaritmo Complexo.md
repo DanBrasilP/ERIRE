@@ -40,7 +40,7 @@ A ERIЯƎ introduz duas operações fundamentais, **EIRE** e **RIRE**, definidas
 A operação **EIRE** redefine a exponencialização de números complexos, utilizando o logaritmo complexo como base para a transformação:
 
 \[
-EIRE(z, m) = e^{i m \ln z} = e^{i m (\ln r + i\theta)}
+EIRE(z, m) = e^{i m \ln z}, \text{ onde } \ln z = \ln r + i\theta \text{ é o ramo principal com } -\pi < \theta \leq \pi
 \]
 
 Expandindo a expressão:
@@ -55,7 +55,7 @@ Isso demonstra que **EIRE altera simultaneamente a fase e o módulo do número c
 A operação **RIRE**, definida como a inversa da **EIRE**, é expressa como:
 
 \[
-RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\theta + \pi / n)}
+RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 onde:

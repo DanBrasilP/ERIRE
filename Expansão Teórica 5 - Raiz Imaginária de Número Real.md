@@ -13,7 +13,7 @@ A **raiz imaginária de um número real** é definida como uma transformação r
 Formalmente, definimos:
 
 \[
-\sqrt[i]{x} = e^{i (\ln x) / 2}
+\sqrt[i]{x} = x^{1/i} = e^{-i \ln x}
 \]
 
 onde:
@@ -23,7 +23,7 @@ onde:
 Para números negativos, a definição é estendida utilizando a propriedade do logaritmo complexo:
 
 \[
-\sqrt[i]{-x} = e^{i (\ln |x| + i\pi) / 2}
+\sqrt[i]{-x} = (-x)^{1/i} = e^{-i (\ln |x| + i\pi)}
 \]
 
 o que significa que a **raiz imaginária de um número negativo resulta em um número complexo rotacionalmente projetado**.
@@ -46,7 +46,7 @@ ou seja, ao elevar o resultado à potência \( i \), retornamos ao número real 
 A relação entre a raiz imaginária e as potências imaginárias pode ser expressa como:
 
 \[
-\sqrt[i]{x} = x^{1/i} = e^{i (\ln x) / 2}
+\sqrt[i]{x} = x^{1/i} = e^{-i \ln x}
 \]
 
 o que reforça sua conexão com **operações exponenciais rotacionais**.

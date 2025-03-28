@@ -16,7 +16,7 @@ A ERIЯƎ opera no conjunto dos **números complexos generalizados**, utilizando
 A operação **EIRE** representa a projeção rotacional e ressonante de um número complexo no espaço multidimensional. Sua definição formalizada para múltiplas dimensões segue:
 
 \[
-EIRE_n(z, m) = \left( z^{m * i} \right)_{\text{multi}}
+EIRE_n(z, m) = z^{m * i} = e^{m i \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 Ou seja, a **EIRE expande um estado oscilante** aplicando **uma potência imaginária rotacional**, generalizada para uma estrutura com múltiplos eixos de ressonância.
@@ -40,14 +40,15 @@ A **EIRE** pode ser interpretada como **uma generalização das transformações
 A operação **RIRE** age como a **inversa da EIRE**, reduzindo um estado ressonante para uma forma estabilizada em um espaço multidimensional. Formalmente:
 
 \[
-RIRE_n(z, n) = \left( \sqrt[n * i]{z} \right)_{\text{multi}}
+RIRE_n(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 Em sua forma matricial:
 
 \[
-\mathbf{RIRE}_n (\mathbf{z}, n) = \mathbf{R}_n^{-1}(n i) \cdot \mathbf{z}
+\mathbf{RIRE}_n (\mathbf{z}, n) = \mathbf{R}_n\left(-\frac{\arg z}{n}\right) \cdot \mathbf{z}
 \]
+(Nota: A matriz deve representar a rotação inversa ajustada para a fase de \( z^{1/(n i)} \).)
 
 Essa operação corresponde **à decomposição rotacional da estrutura oscilante**, estabilizando a ressonância do sistema.
 

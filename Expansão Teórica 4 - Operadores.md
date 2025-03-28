@@ -12,11 +12,11 @@ A ERIЯƎ redefine a manipulação de números complexos utilizando dois operado
 
 - **EIRE (Exponencialização Imaginária Rotacional Evolutiva)**, que transforma um número complexo aplicando um fator exponencial imaginário:
   \[
-  EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}
+  EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
   \]
 - **RIRE (Racionalização Imaginária Rotacional Evolutiva)**, que representa a operação inversa, aplicada sobre uma estrutura de estabilização rotacional:
   \[
-  RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\phi + \pi / n)}
+  RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
   \]
 
 A natureza ressonante dessas operações sugere que a ERIЯƎ pode ser formalizada dentro da estrutura de **grupos de transformação e operadores hipercomplexos**, como quaternions, álgebra geométrica e números hipercomplexos.
@@ -34,7 +34,7 @@ T_m(z) = EIRE(z, m) = z^{m \cdot i}
 \]
 
 \[
-S_n(z) = RIRE(z, n) = \sqrt[n \cdot i]{z}
+S_n(z) = RIRE(z, n) = z^{1/(n i)}
 \]
 
 com a composição de operadores dada por:
@@ -80,7 +80,7 @@ onde a multiplicação com \( i \) pode ser generalizada para qualquer unidade q
 Da mesma forma, a **RIRE** pode ser expressa em termos de extração de raízes quaternárias:
 
 \[
-RIRE(q, n) = \sqrt[n \cdot i]{q} = q^{1/(n i)}.
+RIRE(q, n) = q^{1/(n i)}.
 \]
 
 ### **4.2. Extensão com Álgebra Geométrica (GA)**

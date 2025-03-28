@@ -18,7 +18,7 @@ As operações EIRE e RIRE se baseiam na relação fundamental entre a exponenci
 A **EIRE** pode ser definida como:
 
 \[
-EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}
+EIRE(z, m) = z^{m \cdot i} = e^{i m \ln z}, \text{ onde } \ln z \text{ é o ramo principal com } -\pi < \arg z \leq \pi
 \]
 
 Onde:
@@ -38,7 +38,7 @@ Isso significa que **EIRE** combina **crescimento/decrescimento e rotação** ao
 A operação inversa, **RIRE**, é definida como:
 
 \[
-RIRE(z, n) = \sqrt[n \cdot i]{z} = r^{1/n} e^{i (\phi + \pi / n)}
+RIRE(z, n) = z^{1/(n i)} = e^{(\ln z) / (n i)}
 \]
 
 Onde:
