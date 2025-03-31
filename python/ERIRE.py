@@ -234,6 +234,71 @@ class ERIRE:
         ax.set_title("Transformação Hipercomplexa ERIRE")
         ax.legend()
         plt.show()
+
+    def quaternion_exp(self, q):
+        """
+        Calcula a exponencial de um quaternion q.
+        """
+        a, v1, v2, v3 = q
+        norm_v = mp.sqrt(v1**2 + v2**2 + v3**2)
+
+        if norm_v == 0:
+            return [mp.exp(a), 0, 0, 0]
+
+        exp_a = mp.exp(a)
+        v_unit = [v1 / norm_v, v2 / norm_v, v3 / norm_v]
+        sin_term = mp.sin(norm_v) * mp.mpc(v_unit[0], 0) + mp.mpc(0, 1) * mp.sin(norm_v) * (v_unit[1] + v_unit[2])
+
+        return [exp_a * mp.cos(norm_v), exp_a * sin_term.real, exp_a * sin_term.imag, exp_a * sin_term.imag]
+
+    def quaternion_ln(self, q):
+        """
+        Calcula o logaritmo natural de um quaternion q.
+        """
+        norm_q = mp.sqrt(q[0]**2 + q[1]**2 + q[2]**2 + q[3]**2)
+        v = [q[1], q[2], q[3]]
+        norm_v = mp.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+
+        if norm_v == 0:
+            return [mp.ln(norm_q), 0, 0, 0]
+
+        theta = mp.acos(q[0] / norm_q)
+        v_unit = [v[0] / norm_v, v[1] / norm_v, v[2] / norm_v]
+
+        return [mp.ln(norm_q), theta * v_unit[0], theta * v_unit[1], theta * v_unit[2]]
+
+    def quaternion_rotation(self, q, axis, angle):
+        """
+        Aplica uma rotação tridimensional usando quaternions.
+
+        Parâmetros:
+        - q: O quaternion a ser rotacionado (lista de 4 elementos)
+        - axis: O eixo de rotação (lista de 3 elementos normalizados)
+        - angle: O ângulo da rotação em radianos
+        """
+        axis_norm = mp.sqrt(axis[0]**2 + axis[1]**2 + axis[2]**2)
+        if axis_norm == 0:
+            raise ValueError("O eixo de rotação não pode ser nulo.")
+
+        axis = [axis[0] / axis_norm, axis[1] / axis_norm, axis[2] / axis_norm]
+        rotor = [mp.cos(angle / 2), mp.sin(angle / 2) * axis[0], mp.sin(angle / 2) * axis[1], mp.sin(angle / 2) * axis[2]]
+        rotor_inv = [mp.cos(angle / 2), -mp.sin(angle / 2) * axis[0], -mp.sin(angle / 2) * axis[1], -mp.sin(angle / 2) * axis[2]]
+
+        return self.quaternion_multiply(self.quaternion_multiply(rotor, q), rotor_inv)
+
+    def quaternion_multiply(self, q1, q2):
+        """
+        Multiplicação de dois quaternions q1 e q2.
+        """
+        a1, b1, c1, d1 = q1
+        a2, b2, c2, d2 = q2
+
+        return [
+            a1 * a2 - b1 * b2 - c1 * c2 - d1 * d2,
+            a1 * b2 + b1 * a2 + c1 * d2 - d1 * c2,
+            a1 * c2 - b1 * d2 + c1 * a2 + d1 * b2,
+            a1 * d2 + b1 * c2 - c1 * b2 + d1 * a2
+        ]
         
 # Testes para a classe ERIRE com precisão máxima
 
@@ -468,6 +533,56 @@ def test_multiple_planes():
         print(f"Vetor Original: {vector}")
         print(f"Vetor Transformado: {transformed}\n")
 
+def teste_quaternion_exp():
+    """Teste 19: Verifica se a exponencial de um quaternion é computada corretamente."""
+    erire = ERIRE(0)
+
+    q = [mp.mpf(0), mp.mpf(1), mp.mpf(1), mp.mpf(0)]
+    resultado = erire.quaternion_exp(q)
+
+    print("\n🔹 Teste 19: Exponencial de um quaternion")
+    print("  Quaternion original:", q)
+    print("  Exponencial do quaternion:", resultado)
+
+def teste_quaternion_ln():
+    """Teste 20: Verifica se o logaritmo de um quaternion é computado corretamente."""
+    erire = ERIRE(0)
+
+    q = [mp.mpf(1), mp.mpf(2), mp.mpf(2), mp.mpf(0)]
+    resultado = erire.quaternion_ln(q)
+
+    print("\n🔹 Teste 20: Logaritmo de um quaternion")
+    print("  Quaternion original:", q)
+    print("  Logaritmo natural do quaternion:", resultado)
+
+def teste_quaternion_multiplicacao():
+    """Teste 21: Verifica a multiplicação de dois quaternions."""
+    erire = ERIRE(0)
+
+    q1 = [mp.mpf(1), mp.mpf(1), mp.mpf(0), mp.mpf(0)]
+    q2 = [mp.mpf(0), mp.mpf(1), mp.mpf(1), mp.mpf(0)]
+    resultado = erire.quaternion_multiply(q1, q2)
+
+    print("\n🔹 Teste 21: Multiplicação de quaternions")
+    print("  Quaternion 1:", q1)
+    print("  Quaternion 2:", q2)
+    print("  Produto dos quaternions:", resultado)
+
+def teste_quaternion_rotacao():
+    """Teste 22: Verifica se uma rotação tridimensional é aplicada corretamente."""
+    erire = ERIRE(0)
+
+    q = [mp.mpf(0), mp.mpf(1), mp.mpf(0), mp.mpf(0)]
+    axis = [mp.mpf(0), mp.mpf(1), mp.mpf(0)]
+    angle = mp.pi / 2
+    resultado = erire.quaternion_rotation(q, axis, angle)
+
+    print("\n🔹 Teste 22: Rotação de quaternion")
+    print("  Quaternion original:", q)
+    print("  Eixo de rotação:", axis)
+    print("  Ângulo (radianos):", angle)
+    print("  Quaternion após rotação:", resultado)
+
 # Chamada na main com todos os testes
 if __name__ == "__main__":
     test_symmetry_numeric()
@@ -488,3 +603,7 @@ if __name__ == "__main__":
     test_large_values()
     test_pure_imaginary()
     test_multiple_planes()
+    teste_quaternion_exp()
+    teste_quaternion_ln()
+    teste_quaternion_multiplicacao()
+    teste_quaternion_rotacao()
