@@ -80,4 +80,4 @@ A implementação computacional da ERIЯƎ abre um vasto campo de aplicações, 
 - **Computação quântica** com operadores rotacionais baseados em raízes imaginárias.
 - **Modelagem geométrica e computação gráfica** com transformações ERIЯƎ.
 
-Com essas implementações, a ERIЯƎ **deixa de ser apenas uma estrutura teórica e se torna uma ferramenta matemática computacionalmente viável**, permitindo **novas formas de cálculo e modelagem matemática**. 🚀
+Com essas implementações, a ERIЯƎ **deixa de ser apenas uma estrutura teórica e se torna uma ferramenta matemática computacionalmente viável**, permitindo **novas formas de cálculo e modelagem matemática**.

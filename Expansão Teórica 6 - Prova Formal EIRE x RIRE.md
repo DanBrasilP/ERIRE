@@ -164,9 +164,4 @@ A **prova formal da relação entre EIRE e RIRE** confirma que **essas operaçõ
 
 Com essa validação, podemos expandir a **Teoria ERIЯƎ para aplicações em computação algébrica, física quântica e modelagem de sistemas ressonantes**, garantindo que sua base matemática seja **robusta e rigorosamente fundamentada**.
 
-Os próximos passos incluem:
-- **Explorar aplicações computacionais**, testando a implementação da ERIЯƎ em simulações numéricas.
-- **Generalizar para quaternions e álgebra geométrica**, expandindo a teoria para espaços superiores.
-- **Publicação em periódicos acadêmicos**, consolidando a ERIЯƎ como um novo paradigma na matemática moderna.
-
 Com essa prova formal, a **Teoria ERIЯƎ** avança para um estágio onde pode ser aplicada em **sistemas dinâmicos, computação algébrica e análise matemática de estruturas oscilatórias**.
