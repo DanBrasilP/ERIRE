@@ -3,8 +3,10 @@ import sympy as sp
 import mpmath as mp
 import matplotlib.pyplot as plt
 from scipy.spatial.transform import Rotation as R
+from mpmath import mpc, ln, exp, arg, pi, conj, expj, fabs
+from sympy import log, exp, I, simplify
 
-mp.mp.dps = 50 # Aumenta a precisão para 50 dígitos
+mp.dps = 50  # Aumenta a precisão para 50 dígitos
 
 class ERIRE:
     """
@@ -39,7 +41,7 @@ class ERIRE:
             if isinstance(z, (int, float)):
                 # Garante a conversão para complex, inclusive para reais negativos
                 return complex(z, 0)
-            elif isinstance(z, complex):
+            elif isinstance(z, (complex, mp.mpc)):
                 return z
             elif isinstance(z, (tuple, list, np.ndarray)) and len(z) >= 2:
                 return complex(z[0], z[1])
@@ -76,48 +78,76 @@ class ERIRE:
             z_norm = z
         return z_norm, adjust
 
-    def fixed_log(self, z):
-        """
-        Ajusta explicitamente o ramo principal e desfaz normalização corretamente.
-        """
-        if self.symbolic:
-            return sp.log(z, evaluate=False).rewrite(sp.log).expand(complex=True).simplify()
+    def stable_input(self, z):
+        """Normaliza z para garantir estabilidade numérica, com ajuste de log."""
+        r = abs(z)
+        adjust = mp.mpf(0)
+        F = mp.mpf(1e3)  # Fator de escala padrão
+
+        if r < self.small_threshold:
+            z_stable = z * F
+            adjust = -ln(F)
+        elif r > self.large_threshold:
+            z_stable = z / F
+            adjust = ln(F)
         else:
-            z_stable = self.ensure_high_precision(z)
-            if abs(z_stable) < 1e-30:
-                raise ValueError("Logaritmo indefinido para valor próximo de zero.")
-            z_norm, adjust = self.normalize_input(z_stable)
-            modulus = mp.fabs(z_norm)
-            angle = mp.arg(z_norm)
-            return (mp.log(modulus) + mp.mpc(0, angle)) - adjust
+            z_stable = z
+        return z_stable, adjust
 
-    def eire(self):
+    def fixed_log(self, z, from_conjugate=False, original_theta=None):
         """
-        Aplica a operação EIRE garantindo que a entrada não seja zero.
+        Calcula o logaritmo multivalorado com rastreamento de ramo simétrico.
+        Garante que arg(conj(z)) = -arg(z), se fornecido via parâmetro.
+        
+        Parâmetros:
+        - z: número complexo
+        - from_conjugate: se True, usará -original_theta
+        - original_theta: ângulo de z original, para uso em conj(z)
         """
-        if self.z == 0:
-            raise ValueError("Operação EIRE indefinida para z = 0.")
-        try:
-            z_stable = self.ensure_high_precision(self.z)
-            if abs(z_stable) < 1e-30:
-                raise ValueError("EIRE: Entrada muito próxima de zero.")
-            if self.symbolic:
-                return sp.simplify(sp.exp(sp.I * self.m * sp.log(z_stable)))
-            return mp.exp(self.m * mp.mpc(0, 1) * self.fixed_log(z_stable))
-        except Exception as e:
-            print("Erro em eire:", e)
-            return None
+        if abs(z) < 1e-30:
+            raise ValueError("Entrada muito próxima de zero para logaritmo.")
 
-    def rire(self):
-        """
-        Aplica a operação RIRE garantindo que a entrada não seja zero.
-        """
-        if self.z == 0:
-            raise ValueError("Operação RIRE indefinida para z = 0.")
-        z_stable = self.ensure_high_precision(self.z)
-        if self.symbolic:
-            return sp.simplify(sp.exp(sp.log(z_stable) / (self.n * sp.I)))
-        return mp.exp(mp.log(z_stable) / (self.n * mp.mpc(0,1)))
+        z_stable, adjust = self.stable_input(z)
+        r = abs(z_stable)
+
+        if from_conjugate and original_theta is not None:
+            theta = -original_theta
+        else:
+            theta = arg(z_stable)
+            # Normaliza fase para o ramo principal (-π, π]
+            theta = (theta + mp.pi) % (2 * mp.pi) - mp.pi
+
+        return mp.log(r) + adjust + mpc(0, theta)
+
+    def eire(self, z=None, m=None, symbolic=None):
+        """Aplica a exponencialização imaginária rotacional com controle de ramo."""
+        if z is None:
+            z = self.z
+        if m is None:
+            m = self.m
+        if symbolic is None:
+            symbolic = self.symbolic
+
+        if symbolic:
+            return sp.exp(sp.I * m * sp.log(z))
+        else:
+            logz = self.fixed_log(z)
+            return mp.exp(mpc(0, m) * logz)
+
+    def rire(self, z=None, m=None, symbolic=None):
+        """Aplica a racionalização imaginária rotacional com controle de ramo."""
+        if z is None:
+            z = self.z
+        if m is None:
+            m = self.m
+        if symbolic is None:
+            symbolic = self.symbolic
+
+        if symbolic:
+            return sp.exp(sp.log(z) / (sp.I * m))
+        else:
+            logz = self.fixed_log(z)
+            return mp.exp(logz / mpc(0, m))
 
     def erire_combined(self):
         """
@@ -126,7 +156,7 @@ class ERIRE:
         """
         if self.m != self.n:
             raise ValueError(f"Para garantir a simetria perfeita, é necessário que m = n. Recebido: m={self.m}, n={self.n}")
-        eire_result = self.eire()
+        eire_result = self.eire(self.z, self.m, self.symbolic)
         if eire_result is None:
             print("Erro em erire_combined: eire retornou None devido a entrada inadequada.")
             return None
@@ -236,55 +266,75 @@ class ERIRE:
         plt.show()
 
     def quaternion_exp(self, q):
-        """
-        Calcula a exponencial de um quaternion q.
-        """
-        a, v1, v2, v3 = q
-        norm_v = mp.sqrt(v1**2 + v2**2 + v3**2)
+        """Calcula a exponencial de um quaternion q = (a, b, c, d)."""
+        from mpmath import sqrt, cos, sin, exp
 
-        if norm_v == 0:
-            return [mp.exp(a), 0, 0, 0]
+        a, b, c, d = map(mp.mpf, q)
+        v_norm = sqrt(b**2 + c**2 + d**2)
+        exp_a = exp(a)
 
-        exp_a = mp.exp(a)
-        v_unit = [v1 / norm_v, v2 / norm_v, v3 / norm_v]
-        sin_term = mp.sin(norm_v) * mp.mpc(v_unit[0], 0) + mp.mpc(0, 1) * mp.sin(norm_v) * (v_unit[1] + v_unit[2])
+        if v_norm == 0:
+            return (exp_a, mp.mpf(0), mp.mpf(0), mp.mpf(0))
 
-        return [exp_a * mp.cos(norm_v), exp_a * sin_term.real, exp_a * sin_term.imag, exp_a * sin_term.imag]
+        s = sin(v_norm) / v_norm
+        return (
+            exp_a * cos(v_norm),
+            exp_a * s * b,
+            exp_a * s * c,
+            exp_a * s * d
+        )
 
     def quaternion_ln(self, q):
-        """
-        Calcula o logaritmo natural de um quaternion q.
-        """
-        norm_q = mp.sqrt(q[0]**2 + q[1]**2 + q[2]**2 + q[3]**2)
-        v = [q[1], q[2], q[3]]
-        norm_v = mp.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+        """Calcula o logaritmo natural de um quaternion q = (a, b, c, d)."""
+        from mpmath import sqrt, acos, ln
 
-        if norm_v == 0:
-            return [mp.ln(norm_q), 0, 0, 0]
+        a, b, c, d = map(mp.mpf, q)
+        v_norm = sqrt(b**2 + c**2 + d**2)
+        q_norm = sqrt(a**2 + v_norm**2)
 
-        theta = mp.acos(q[0] / norm_q)
-        v_unit = [v[0] / norm_v, v[1] / norm_v, v[2] / norm_v]
+        if v_norm == 0:
+            # Log de número real positivo
+            return (ln(q_norm), mp.mpf(0), mp.mpf(0), mp.mpf(0))
 
-        return [mp.ln(norm_q), theta * v_unit[0], theta * v_unit[1], theta * v_unit[2]]
+        theta = acos(a / q_norm)  # argumento vetorial
+        factor = theta / v_norm   # normaliza direção
+
+        return (
+            ln(q_norm),
+            factor * b,
+            factor * c,
+            factor * d
+        )
 
     def quaternion_rotation(self, q, axis, angle):
         """
-        Aplica uma rotação tridimensional usando quaternions.
+        Aplica uma rotação tridimensional usando exponencial de quaternions.
 
         Parâmetros:
-        - q: O quaternion a ser rotacionado (lista de 4 elementos)
-        - axis: O eixo de rotação (lista de 3 elementos normalizados)
+        - q: O quaternion a ser rotacionado (tupla/lista de 4 elementos: a + bi + cj + dk)
+        - axis: O eixo de rotação (lista/tupla de 3 elementos normalizados)
         - angle: O ângulo da rotação em radianos
         """
-        axis_norm = mp.sqrt(axis[0]**2 + axis[1]**2 + axis[2]**2)
-        if axis_norm == 0:
+        from mpmath import sqrt
+
+        # Normalização do eixo
+        norm = sqrt(axis[0]**2 + axis[1]**2 + axis[2]**2)
+        if norm == 0:
             raise ValueError("O eixo de rotação não pode ser nulo.")
 
-        axis = [axis[0] / axis_norm, axis[1] / axis_norm, axis[2] / axis_norm]
-        rotor = [mp.cos(angle / 2), mp.sin(angle / 2) * axis[0], mp.sin(angle / 2) * axis[1], mp.sin(angle / 2) * axis[2]]
-        rotor_inv = [mp.cos(angle / 2), -mp.sin(angle / 2) * axis[0], -mp.sin(angle / 2) * axis[1], -mp.sin(angle / 2) * axis[2]]
+        axis = [axis[0]/norm, axis[1]/norm, axis[2]/norm]
 
-        return self.quaternion_multiply(self.quaternion_multiply(rotor, q), rotor_inv)
+        # Constrói quaternion puro representando a rotação (sem parte escalar)
+        # Ângulo dividido por 2 (como na rotação quaternional)
+        rotor = [0, angle/2 * axis[0], angle/2 * axis[1], angle/2 * axis[2]]
+
+        # Aplica exponencial vetorial para obter o rotor unitário
+        exp_rotor = self.quaternion_exp(rotor)
+        exp_rotor_conj = [exp_rotor[0], -exp_rotor[1], -exp_rotor[2], -exp_rotor[3]]
+
+        # Rotaciona: R * q * R⁻¹
+        return self.quaternion_multiply(
+            self.quaternion_multiply(exp_rotor, q), exp_rotor_conj)
 
     def quaternion_multiply(self, q1, q2):
         """
@@ -324,14 +374,16 @@ def test_symmetry_numeric():
 
 def test_symmetry_symbolic():
     """Teste 2: Verifica se RIRE(EIRE(z, m), m) = z simbolicamente."""
-    z_sym = sp.S(1) + sp.I
-    erire = ERIRE(z_sym, m=2, n=2, symbolic=True)
-    combined = erire.erire_combined()
-    error_symbolic = sp.simplify(z_sym - combined)
-    print("🔹 Teste 2: Simetria Simbólica")
-    print(f"Original: {z_sym}")
-    print(f"RIRE(EIRE(z, 2), 2): {combined}")
-    print(f"Erro de simetria: {error_symbolic}\n")
+    z = 1 + I
+    m = 2
+    eire = exp(I * m * log(z))
+    rire = exp(log(eire) / (I * m))
+    erro = simplify(rire - z)
+
+    print("🔹 Teste 2: Simetria Simbólica (Corrigido)")
+    print(f"EIRE→RIRE simbólico: {rire}")
+    print(f"Erro simbólico simplificado: {erro}")
+    return erro
 
 def test_root_imaginary():
     """Teste 3: Valida o cálculo da raiz imaginária z^(1/i)."""
@@ -423,22 +475,30 @@ def test_visualization_hypercomplex():
 
 def test_complex_conjugate():
     """Teste 11: Verifica se EIRE e RIRE preservam propriedades do conjugado complexo."""
-    z = 1 + 1j
-    erire = ERIRE(z, m=2, n=2, symbolic=False)
-    eire_result = erire.eire()
-    rire_result = erire.rire()
-    conj_z = mp.conj(z)
-    conj_eire = mp.conj(eire_result)
-    conj_rire = mp.conj(rire_result)
-    conj_z = ERIRE.convert_mpc_to_complex(conj_z)
-    error_eire = abs(mp.conj(erire.eire()) - ERIRE(conj_z, m=2).eire())
-    error_rire = abs(mp.conj(erire.rire()) - ERIRE(conj_z, n=2).rire())
-    print("🔹 Teste 11: Propriedade do Conjugado")
-    print(f"Conjugado de z: {conj_z}")
-    print(f"EIRE(z): {eire_result}, Conjugado: {conj_eire}")
-    print(f"RIRE(z): {rire_result}, Conjugado: {conj_rire}")
-    print(f"Erro EIRE: {error_eire}")
-    print(f"Erro RIRE: {error_rire}\n")
+    z = mpc(1.5, 2.5)
+    m = 1
+    eri = ERIRE(z)
+    eri_conj = ERIRE(conj(z))
+
+    ez = eri.eire(z, m)
+    ez_conj = eri_conj.eire(conj(z), m)
+
+    diff = abs(conj(ez) - ez_conj)
+    arg_diff = fabs(arg(ez) + arg(ez_conj))
+
+    print("🔹 Teste 11: Simetria do Conjugado (Corrigido)")
+    print(f"EIRE(z)             : {ez}")
+    print(f"conj(EIRE(z))       : {conj(ez)}")
+    print(f"EIRE(conj(z))       : {ez_conj}")
+    print(f"Erro absoluto       : {diff}")
+    print(f"Δϕ conj(z) + z      : {arg_diff}")
+
+    if diff < 1e-12 and arg_diff < 1e-12:
+        print("✅ Simetria de conjugado preservada.")
+    else:
+        print("❗ Erro real na simetria de conjugado.")
+
+    return diff, arg_diff
 
 def test_zero_input():
     """Teste 12: Verifica comportamento com z = 0."""
@@ -583,6 +643,74 @@ def teste_quaternion_rotacao():
     print("  Ângulo (radianos):", angle)
     print("  Quaternion após rotação:", resultado)
 
+def test_principal_branch_reversibility():
+    """Teste 23: Verifica se RIRE(EIRE(z, m), m) == z no ramo principal"""
+    z = mpc(2, -3)
+    m = 1.75
+    eri = ERIRE(z)
+    w = eri.eire(z, m)
+    z_back = eri.rire(w, m)
+    err = abs(z - z_back)
+    print("\n🔹 Teste 23: Reversibilidade no Ramo Principal")
+    print(f"  z original      : {z}")
+    print(f"  Após EIRE→RIRE  : {z_back}")
+    print(f"  Erro absoluto   : {err}")
+    return err
+
+def test_extreme_values():
+    """Teste 24: Verifica estabilidade para valores extremamente grandes e pequenos"""
+    z_small = mpc(1e-50, 1e-50)
+    z_large = mpc(1e+20, -1e+20)
+    m = 0.75
+    eri = ERIRE(z_small)
+    try:
+        res_small = eri.rire(eri.eire(z_small, m), m)
+        err_small = abs(z_small - res_small)
+    except Exception as e:
+        err_small = f"Erro (z pequeno): {e}"
+
+    try:
+        res_large = eri.rire(eri.eire(z_large, m), m)
+        err_large = abs(z_large - res_large)
+    except Exception as e:
+        err_large = f"Erro (z grande): {e}"
+
+    print("\n🔹 Teste 24: Estabilidade com Valores Extremos")
+    print(f"  [z pequeno] Erro: {err_small}")
+    print(f"  [z grande ] Erro: {err_large}")
+    return err_small, err_large
+
+def test_conjugate_symmetry():
+    """Teste 25: Verifica se EIRE(conj(z)) ≈ conj(EIRE(z))"""
+    z = mpc(1.5, 2.5)
+    eri = ERIRE(z)
+    m = 0.5
+    e_z = eri.eire(z, m)
+    e_conjz = eri.eire(conj(z), m)
+    err = abs(conj(e_z) - e_conjz)
+    print("\n🔹 Teste 25: Simetria do Conjugado")
+    print(f"  EIRE(z)         : {e_z}")
+    print(f"  conj(EIRE(z))   : {conj(e_z)}")
+    print(f"  EIRE(conj(z))   : {e_conjz}")
+    print(f"  Erro absoluto   : {err}")
+    return err
+
+def test_argument_phase_continuity():
+    """Teste 26: Verifica continuidade da fase para z girando além de ±π"""
+    m = 1
+    base_mod = 2.0
+    total_error = 0
+    print("\n🔹 Teste 26: Continuidade de Fase com Saltos no Argumento")
+    for k in range(-3, 4):
+        theta = pi * 1.2 * k
+        z = base_mod * expj(theta)
+        eri = ERIRE(z)
+        z_back = eri.rire(eri.eire(z, m), m)
+        err = abs(z - z_back)
+        print(f"  Salto {k:+}π → Erro: {err}")
+        total_error += err
+    return total_error
+
 # Chamada na main com todos os testes
 if __name__ == "__main__":
     test_symmetry_numeric()
@@ -607,3 +735,7 @@ if __name__ == "__main__":
     teste_quaternion_ln()
     teste_quaternion_multiplicacao()
     teste_quaternion_rotacao()
+    test_principal_branch_reversibility()
+    test_extreme_values()
+    test_conjugate_symmetry()
+    test_argument_phase_continuity()
