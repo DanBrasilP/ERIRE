@@ -38,7 +38,7 @@ As transformações fundamentais da ERIЯƎ são:
 O fator **\( i \)** no expoente implica que essas transformações **giram** os números no plano complexo.  
 Essas rotações são análogas a ciclos oscilatórios — o comportamento básico da ressonância.
 
-✅ **Importância:**
+**Importância:**
 - **EIRE** intensifica a rotação ressonante.
 - **RIRE** estabiliza ou ajusta a rotação.
 - Juntas, formam um **sistema dinâmico de ressonância algébrica**.
@@ -55,7 +55,6 @@ e^{i\theta} = \cos \theta + i \sin \theta
 Operações com exponenciais imaginárias implicam comportamento **periódico e oscilatório**.  
 Assim como a **Transformada de Fourier** decompõe funções em modos de ressonância (senos e cossenos), a ERIЯƎ **gera variações rotacionais** que modulam ressonâncias algébricas.
 
-✅ **Conclusão:**
 A ERIЯƎ funciona como um sistema de ressonância, onde parâmetros ajustam o “tom” e a intensidade da resposta algébrica.
 
 ---
@@ -68,7 +67,6 @@ Nos **quaternions**, temos:
 - Rotação em planos \( i \), \( j \), \( k \)
 - Transformações como EIRE e RIRE agem como operadores **vibracionais multieixos**
 
-✅ **Conclusão:**
 A ERIЯƎ expande a ideia de ressonância para **dimensões superiores**, permitindo manipular frequências e rotações em hiperespaços.
 
 ---
@@ -82,7 +80,6 @@ Isso afeta diretamente a **curvatura de trajetórias**, o que pode representar:
 - Sinais físicos
 - Ondas acopladas
 
-✅ **Conclusão:**
 A ERIЯƎ atua como um sistema de **modulação rotacional e ressonante** em geometria, física e sinais multidimensionais.
 
 ---
@@ -115,7 +112,7 @@ Se essa estrutura for expandida para um espaço quadridimensional, **ERIЯƎ pod
 
 ---
 
-## 6. Conclusão Geral
+## 6. Conclusão
 
 A **Teoria ERIЯƎ** está profundamente ligada ao conceito de **ressonância**, pois:
 
