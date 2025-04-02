@@ -44,7 +44,18 @@ DanBrasilP, ChatGPT, Grok3. "Teoria ERIЯƎ - Exponencialização e Racionaliza�
 ---
 
 ## 📜 Licença
-Este projeto está licenciado sob a **Licença Pública Geral GNU v3 (GPLv3)**, garantindo que o conhecimento permaneça aberto e colaborativo.
+
+Este repositório utiliza um modelo de licenciamento duplo para garantir liberdade e abertura em todas as formas de contribuição:
+
+- **Código-fonte e implementações computacionais** estão licenciados sob a [GNU General Public License v3.0 (GPLv3)](https://www.gnu.org/licenses/gpl-3.0.html).  
+  Isso garante que qualquer uso, modificação ou redistribuição do software mantenha o mesmo nível de liberdade e abertura.
+
+- **Textos teóricos, artigos, explicações e documentação** estão licenciados sob a [Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br).  
+  Isso permite uso e adaptação do conteúdo, inclusive para fins comerciais, desde que:
+  - seja atribuída a autoria original (DanBrasilP),
+  - qualquer derivação utilize a mesma licença CC BY-SA 4.0.
+
+> Para mais informações, consulte `LICENSE` (GPLv3) e `LICENSE-CC` (CC BY-SA 4.0).
 
 ---
 
