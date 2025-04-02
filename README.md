@@ -57,6 +57,19 @@ Este repositório utiliza um modelo de licenciamento duplo para garantir liberda
 
 > Para mais informações, consulte `LICENSE` (GPLv3) e `LICENSE-CC` (CC BY-SA 4.0).
 
+### ❗ Declaração de Ética e Uso Responsável
+
+Este projeto é dedicado à ciência, à educação e ao avanço do conhecimento em benefício da humanidade.
+
+O autor **não autoriza** o uso deste conteúdo (teoria, código ou documentação) para fins relacionados à:
+- Produção ou operação de armas
+- Sistemas de vigilância hostil
+- Tecnologias militares de ataque ou defesa
+
+Mesmo que as licenças [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) e [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) não prevejam restrições sobre o uso, **fica registrada aqui uma objeção ética explícita** a essas finalidades.
+
+Contamos com a consciência dos usuários para respeitar esse princípio.
+
 ---
 
 🚀 **Vamos explorar juntos os limites da matemática, física, química, cosmologia... e computação!**
