@@ -1,75 +1,95 @@
-# **Teoria ERIЯƎ - Exponencialização e Racionalização Imaginária Rotacional Evolutiva**
-
-## **📌 Sobre a Teoria ERIЯƎ**
-A **Teoria ERIЯƎ** propõe uma nova abordagem para a compreensão das operações sobre números complexos e suas raízes, redefinindo a álgebra tradicional para incluir **transformações ressonantes e rotacionais**. Com a introdução das operações **EIRE (Exponencialização Imaginária Rotacional Evolutiva)** e **RIRE (Racionalização Imaginária Rotacional Evolutiva)**, a teoria sugere uma interpretação **multidimensional e dinâmica** dos números imaginários.
-
-O desenvolvimento da teoria contou com interações com inteligências artificiais, Grok e ChatGPT. A interação entre ChatGPT e Grok possibilitou um avanço significativo na formulação e documentação da teoria. Entretanto, o processo envolveu muitas iterações e erros, pois lidar com grande quantidade de material e análises pode levar à saturação cognitiva para IAs. O esforço contínuo para revisar e aprimorar a teoria visa garantir sua coerência e testabilidade, tornando-a acessível para discussão e validação pela comunidade científica. O material está sendo revisao aos poucos.
-
-Este repositório contém **artigos teóricos, provas formais e aplicações computacionais** da ERIЯƎ, resultado de uma colaboração com **ChatGPT**, explorando a expansão da álgebra complexa para **estruturas rotacionais e ressonantes**.
+# Teoria ERIЯƎ – Exponencialização e Racionalização Imaginária Rotacional Evolutiva  
+## ERIЯƎ Theory – Exponential and Rational Imaginary Rotational Evolution
 
 ---
 
-## **📜 Artigos e Documentação**
-A teoria ERIЯƎ foi formalizada em diversos artigos que abordam desde sua fundamentação matemática até aplicações computacionais. Cada documento pode ser explorado conforme o nível de interesse.
+## Visão Geral / Overview
 
-A teoria foi expandida para áreas multidisciplinares podendo se estender ainda mais com o passar do tempo.
+**Português**  
+A Teoria ERIЯƎ propõe uma estrutura algébrica e geométrica para representar números complexos como sistemas rotacionais dinâmicos.  
+Baseia-se em dois operadores principais:
+- **EIRE**: Exponencialização Imaginária Rotacional Evolutiva  
+- **RIRE**: Racionalização Imaginária Rotacional Evolutiva  
 
----
+Originalmente formulada como base algébrica para uma nova equação da gravidade, a ERIЯƎ oferece uma abordagem unificada entre a física quântica e clássica, tratando o espaço como um meio ressonante coerente.  
+As transformações envolvem acoplamentos de fase e tensões rotacionais em planos imaginários múltiplos (i, j, k).
 
-## **🔬 Impacto e Possíveis Aplicações**
-A ERIЯƎ pode ter aplicações em diversas áreas da matemática e ciência computacional:
+**English**  
+The ERIЯƎ Theory introduces a novel algebraic and geometric framework for modeling complex numbers as dynamic rotational systems.  
+It defines two core operators:
+- **EIRE**: Exponential Imaginary Rotational Evolution  
+- **RIRE**: Rational Imaginary Rotational Evolution  
 
-✅ **Computação Algébrica** → Manipulação avançada de funções complexas e hipercomplexas.  
-✅ **Física Quântica** → Modelagem de operadores ressonantes para manipulação de estados quânticos.  
-✅ **Geometria e Modelagem 3D** → Alternativa para transformações complexas e hipercomplexas.  
-✅ **Processamento de Sinais** → Uma nova abordagem para análise espectral baseada em raízes imaginárias.  
-✅ **Teoria dos Números e Álgebra** → Expansão dos fundamentos matemáticos das raízes complexas.
-
----
-
-## **🤝 Contribuições e Desenvolvimento**
-Este repositório representa um esforço colaborativo em conjunto com **ChatGPT** e **Grok3**, com o objetivo de **explorar novos caminhos na matemática e computação**. 
-A Teoria ERIЯƎ ainda está em desenvolvimento, e qualquer contribuição, sugestão ou crítica é bem-vinda!
-
-📩 Caso tenha interesse em contribuir ou discutir aplicações da ERIЯƎ, sinta-se à vontade para abrir uma **Issue** ou enviar um **Pull Request**.
+Originally developed as a algebraic basis for a new gravitational model, ERIЯƎ proposes a reinterpretation of space as a coherent, resonant medium rather than a passive vacuum.  
+The framework enables unified modeling of quantum and classical physical systems through algebraic rotation and phase coupling in multidimensional imaginary planes (i, j, k).
 
 ---
 
-## **📌 Como Citar este Trabalho**
-Se você deseja citar a **Teoria ERIЯƎ**, utilize o seguinte formato:
-DanBrasilP, ChatGPT, Grok3. "Teoria ERIЯƎ - Exponencialização e Racionalização Imaginária Rotacional Evolutiva." GitHub, 2025.
+## Sobre o Desenvolvimento / Development Notes
 
-🔗 **Repositório Oficial**: https://github.com/DanBrasilP/ERIRE
+**Português**  
+A teoria foi desenvolvida por meio de múltiplas interações com inteligências artificiais (ChatGPT e Grok).  
+Apesar de serem essenciais para estruturar e expandir ideias, as IAs demonstraram limitações significativas — sobretudo a dificuldade em manter coerência conceitual ao longo de trabalhos teóricos extensos e complexos sem supervisão humana.
 
----
+O papel do autor humano foi o de observador e revisor crítico, orientando o processo e consolidando versões coerentes após muitas iterações falhas.
 
-## 📜 Licença
+**English**  
+This theory was developed through extensive interaction with AI systems (ChatGPT and Grok).  
+While the AI played a critical role in exploring, formatting, and organizing ideas, it also revealed its current limitations — namely, the inability to maintain conceptual consistency over long and complex theoretical structures without human oversight.
 
-Este repositório utiliza um modelo de licenciamento duplo para garantir liberdade e abertura em todas as formas de contribuição:
-
-- **Código-fonte e implementações computacionais** estão licenciados sob a [GNU General Public License v3.0 (GPLv3)](https://www.gnu.org/licenses/gpl-3.0.html).  
-  Isso garante que qualquer uso, modificação ou redistribuição do software mantenha o mesmo nível de liberdade e abertura.
-
-- **Textos teóricos, artigos, explicações e documentação** estão licenciados sob a [Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br).  
-  Isso permite uso e adaptação do conteúdo, inclusive para fins comerciais, desde que:
-  - seja atribuída a autoria original (DanBrasilP),
-  - qualquer derivação utilize a mesma licença CC BY-SA 4.0.
-
-> Para mais informações, consulte `LICENSE` (GPLv3) e `LICENSE-CC` (CC BY-SA 4.0).
-
-### ❗ Declaração de Ética e Uso Responsável
-
-Este projeto é dedicado à ciência, à educação e ao avanço do conhecimento em benefício da humanidade.
-
-O autor **não autoriza** o uso deste conteúdo (teoria, código ou documentação) para fins relacionados à:
-- Produção ou operação de armas
-- Sistemas de vigilância hostil
-- Tecnologias militares de ataque ou defesa
-
-Mesmo que as licenças [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) e [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) não prevejam restrições sobre o uso, **fica registrada aqui uma objeção ética explícita** a essas finalidades.
-
-Contamos com a consciência dos usuários para respeitar esse princípio.
+The human author acted not as the originator of each piece, but as a first-hand observer and critical navigator through multiple iterations, many of which were flawed or incoherent.
 
 ---
 
-🚀 **Vamos explorar juntos os limites da matemática, física, química, cosmologia... e computação!**
+## Aplicações / Applications
+
+- **Computação Algébrica / Algebraic Computation**: operadores simbólicos para transformações complexas e hipercomplexas  
+- **Modelagem Quântica / Quantum Modeling**: operadores ressonantes como analogias de transições quânticas  
+- **Gravitação / Gravitational Theory**: formulação contínua da gravidade por tensão rotacional  
+- **Processamento de Sinais / Signal Processing**: nova abordagem espectral baseada em fase  
+- **Física e Matemática Teórica / Theoretical Physics & Mathematics**: novas perspectivas para álgebra, geometria e teoria dos números
+
+---
+
+## Citação / Citation
+
+**DanBrasilP, ChatGPT, Grok**  
+**"Teoria ERIЯƎ – Exponencialização e Racionalização Imaginária Rotacional Evolutiva."**  
+GitHub, 2025.  
+[https://github.com/DanBrasilP/ERIRE](https://github.com/DanBrasilP/ERIRE)
+
+---
+
+## Licença / License
+
+Este projeto adota um modelo de licenciamento duplo, garantindo liberdade de uso e responsabilidade ética:
+
+- **Código e ferramentas computacionais**:  
+  Licenciados sob [GNU General Public License v3.0 (GPLv3)](https://www.gnu.org/licenses/gpl-3.0.html)
+
+- **Teoria e documentação**:  
+  Licenciadas sob [Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+---
+
+## ❗ Declaração de Ética / Ethical Notice
+
+**Português**  
+Este projeto é dedicado à ciência, à educação e à liberdade do conhecimento.  
+**O uso deste conteúdo para fins de armamento, vigilância hostil ou tecnologias militares é eticamente rejeitado pelo autor.**  
+Mesmo que as licenças não proíbam isso legalmente, esta é uma declaração explícita de objeção moral.
+
+**English**  
+This project is dedicated to science, education, and open exploration.  
+**Use of this work for the development, deployment, or support of weapons, military systems, or hostile surveillance technologies is ethically repudiated by the author.**  
+Even though the licenses do not legally restrict such usage, this declaration serves as a moral boundary.
+
+---
+
+> **Português**  
+> O espaço não é vazio, nem passivo. Ele é vivo — vibra, gira, e responde.  
+> Ao transcendermos os dogmas autoimpostos das interpretações fragmentadas, reencontramos o Éter dos nossos antepassados — há muito silenciado — e, com ele, a liberdade esquecida de pensar sem fronteiras.
+
+> **English**  
+> Space is neither empty nor passive. It is alive — it vibrates, spins, and responds.  
+> By transcending the self-imposed dogmas of fragmented interpretations, we rediscover the Ether of our ancestors — long silenced — and with it, the forgotten freedom to think without boundaries.
