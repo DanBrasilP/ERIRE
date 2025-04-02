@@ -122,8 +122,7 @@ Esse campo é gerado pela matéria como uma resposta do meio, obedecendo a uma e
 Inspirada na equação de Navier-Stokes, adaptada ao domínio rotacional e ressonante:
 
 \[
-\rho_s \left( \frac{\partial \vec{v}_R}{\partial t} + (\vec{v}_R \cdot \nabla)\vec{v}_R \right) =
-- \nabla_E P + \mu_R \nabla_E^2 \vec{v}_R + \vec{F}_m(x)
+\rho_s \left( \frac{\partial \vec{v}_R}{\partial t} + (\vec{v}_R \cdot \nabla)\vec{v}_R \right) = - \nabla_E P + \mu_R \nabla_E^2 \vec{v}_R + \vec{F}_m(x)
 \]
 
 Onde:
@@ -183,8 +182,7 @@ O potencial gravitacional rotacional é definido por:
 A equação de campo gravitacional ressonante no domínio ERIЯƎ:
 
 \[
-\rho_s \left( \frac{\partial \vec{v}_R}{\partial t} + (\vec{v}_R \cdot \nabla)\vec{v}_R \right) =
-- \nabla_E \left( \rho_m \cdot \vec{R}_m \right) + \mu_R \nabla_E^2 \vec{v}_R
+\rho_s \left( \frac{\partial \vec{v}_R}{\partial t} + (\vec{v}_R \cdot \nabla)\vec{v}_R \right) = - \nabla_E \left( \rho_m \cdot \vec{R}_m \right) + \mu_R \nabla_E^2 \vec{v}_R
 \]
 
 Com o campo gravitacional definido por:
