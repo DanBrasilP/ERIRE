@@ -84,7 +84,7 @@ próton  = ERIRE(1 - 0j, symbolic=False)
 def r_n_bohr(n): return n**2 * a_0
 def E_bohr(n): return -13.6 / n**2
 
-print("\n=== Caso 2 —- Coerência Máxima - Comparação ERIЯƎ (com ERIRE) vs Bohr ===")
+print("\n=== Caso 2 - Coerência Máxima - Comparação ERIЯƎ (com ERIRE) vs Bohr ===")
 print(f"{'n':>2} {'r_ERIRE (nm_R)':>12} {'U_ERIRE (eV_R)':>14} {'r2_ERIRE (nm)':>12} {'U2_ERIRE (eV)':>14} {'r_Bohr (nm)':>12} {'E_Bohr (eV)':>12} {'|Z_total|':>10}")
 print(f"{'':>2} {'Radial':>12} {'Radial':>14} {'Linear Dinamico':>12} {'Linear Dinamico':>14} {'Linear':>10} {'Linear':>12} {'':>10}")
 print("-" * 75)
