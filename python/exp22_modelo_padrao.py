@@ -5,15 +5,14 @@
 # Fórmula base da projeção: m_proj = ∆ × coerência × derivada coerencial
 # O campo de Higgs emerge da ruptura coerencial média (∆) como escalar puro.
 
-from mpmath import mp, mpc, cos, sin, radians, fabs
-mp.dps = 30
+from ERIRE import ERIRE 
+from mpmath import mp, mpc, fabs, cos, sin, radians
+mp.dps = 50
 
 # Parâmetros gerais
 alpha_ref = mp.mpf("1")
 delta_higgs = mp.mpf("0.154892")  # escalar emergente validado
 coerencia_estavel = mp.mpf("3.564293")  # floral mínima
-
-def ERIRE(z): return z.real * z.imag + mp.sin(z.real) * mp.cos(z.imag)
 
 def coerencia_transicional(r1, r2, fase1, fase2, alpha=alpha_ref, n_amostras=500):
     dt = 1 / n_amostras
@@ -23,7 +22,8 @@ def coerencia_transicional(r1, r2, fase1, fase2, alpha=alpha_ref, n_amostras=500
         r = r1 + (r2 - r1) * t
         fase = fase1 + (fase2 - fase1) * t
         z = mpc(r * cos(radians(fase)), r * sin(radians(fase)))
-        energia_total += fabs(ERIRE(z)) * alpha * dt
+        e = ERIRE(z, symbolic=False)
+        energia_total += fabs(e.eire()) * alpha * dt
     return energia_total
 
 def coerencia_toroidal(r, fase1, fase2, n_amostras=500):
@@ -33,7 +33,8 @@ def coerencia_toroidal(r, fase1, fase2, n_amostras=500):
         t = i * dt
         fase = fase1 + (fase2 - fase1) * t
         z = mpc(r * cos(radians(fase)), r * sin(radians(fase)))
-        energia_total += fabs(ERIRE(z)) * dt
+        e = ERIRE(z, symbolic=False)
+        energia_total += fabs(e.eire()) * dt
     return energia_total
 
 def coerencia_plural(r, fase0, fase1, n_lobulos=5, n_amostras=500):
@@ -44,7 +45,8 @@ def coerencia_plural(r, fase0, fase1, n_lobulos=5, n_amostras=500):
         fase = fase0 + (fase1 - fase0) * t
         fase_perturbada = fase + mp.pi * mp.sin(n_lobulos * 2 * mp.pi * t)
         z = mpc(r * cos(radians(fase_perturbada)), r * sin(radians(fase_perturbada)))
-        energia_total += fabs(ERIRE(z)) * dt
+        e = ERIRE(z, symbolic=False)
+        energia_total += fabs(e.eire()) * dt
     return energia_total
 
 def derivada_angular_floral(r, lobos=5, n_amostras=500):
@@ -57,8 +59,8 @@ def derivada_angular_floral(r, lobos=5, n_amostras=500):
         f2 = 360 * t2 + mp.pi * mp.sin(lobos * 2 * mp.pi * t2)
         z1 = mpc(r * cos(radians(f1)), r * sin(radians(f1)))
         z2 = mpc(r * cos(radians(f2)), r * sin(radians(f2)))
-        e1 = fabs(ERIRE(z1))
-        e2 = fabs(ERIRE(z2))
+        e1 = fabs(ERIRE(z1, symbolic=False).eire())
+        e2 = fabs(ERIRE(z2, symbolic=False).eire())
         variacoes.append(abs(e2 - e1) / dt)
     return sum(variacoes) / len(variacoes)
 

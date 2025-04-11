@@ -3,15 +3,11 @@
 # A teoria ERIЯƎ interpreta ambos os fenômenos como projeções de coerência rotacional
 # sob restrição geométrica imposta ao campo. Nenhum ajuste arbitrário é utilizado.
 
+from ERIRE import ERIRE  # importa a classe da versão modular
 from mpmath import mp, mpc, sin, cos, pi, fabs, radians, sqrt
 import matplotlib.pyplot as plt
 
 mp.dps = 50  # Alta precisão para projeções coerenciais
-
-# ------------------------------------------------------------------------------------
-# Função base ERIRE (simplificada)
-def ERIRE(z):
-    return z.real * z.imag + sin(z.real) * cos(z.imag)
 
 # ------------------------------------------------------------------------------------
 # SIMULAÇÃO 1 – Interferência de Partículas (Fenda Dupla com Elétrons)
@@ -42,8 +38,8 @@ def interferencia_fenda_dupla_erire(
         z2 = mpc(raio_bolha * cos(fase2), raio_bolha * sin(fase2))
 
         # Interferência coerencial derivada
-        c1 = fabs(ERIRE(z1))
-        c2 = fabs(ERIRE(z2))
+        c1 = fabs(ERIRE(z1, symbolic=False).eire())
+        c2 = fabs(ERIRE(z2, symbolic=False).eire())
         intensidade = c1 + c2 + 2 * sqrt(c1 * c2)
 
         resultados.append((x, intensidade))
@@ -60,7 +56,7 @@ def coerencia_angular_normalizada(n_max=500, fator_escala=1.0):
     for n in range(1, n_max + 1):
         fase = 2 * pi * n / n_max
         z = mpc(cos(fase * fator_escala), sin(fase * fator_escala))
-        coerencia += fabs(ERIRE(z))
+        coerencia += fabs(ERIRE(z, symbolic=False).eire())
     return coerencia
 
 def simular_forca_casimir_erire(d_placas, L_livre, n_max=500):
@@ -159,8 +155,8 @@ for energia in energias_keV:
         fase2 = fator_angular * (θ - d_fenda / (2 * D_tela))
         z1 = mpc(1.0 * cos(fase1), 1.0 * sin(fase1))
         z2 = mpc(1.0 * cos(fase2), 1.0 * sin(fase2))
-        c1 = fabs(ERIRE(z1))
-        c2 = fabs(ERIRE(z2))
+        c1 = fabs(ERIRE(z1, symbolic=False).eire())
+        c2 = fabs(ERIRE(z2, symbolic=False).eire())
         i_coer = c1 + c2 + 2 * sqrt(c1 * c2)
         dados.append((x, i_coer))
 
@@ -199,8 +195,8 @@ for idx, energia in enumerate(energias):
         fase2 = fator_angular * (θ - d_fenda / (2 * D_tela))
         z1 = mpc(1.0 * cos(fase1), 1.0 * sin(fase1))
         z2 = mpc(1.0 * cos(fase2), 1.0 * sin(fase2))
-        c1 = fabs(ERIRE(z1))
-        c2 = fabs(ERIRE(z2))
+        c1 = fabs(ERIRE(z1, symbolic=False).eire())
+        c2 = fabs(ERIRE(z2, symbolic=False).eire())
         i_coer = c1 + c2 + 2 * sqrt(c1 * c2)
         dados.append((x * 1e3, float(i_coer)))
     xs, ys = zip(*dados)
