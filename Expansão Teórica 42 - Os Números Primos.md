@@ -97,6 +97,9 @@ A implementação computacional do modelo quaternário até \( n = 100 \) retorn
 - O modelo prediz que a estrutura dos primos está **intrinsecamente ligada à geometria da totalidade coerencial**;
 - E que **outros fenômenos matemáticos e físicos** podem ser mapeados por essa lógica (como ressonâncias em partículas, campos e sistemas).
 
+> A implementação computacional foi validada com precisão para `n ∈ [2, 100]`.  
+> Para valores maiores, erros numéricos e limites do formalismo multiplicativo quaternário comprometem a confiabilidade direta da verificação.
+
 ---
 
 ## 8. Conclusão
@@ -106,3 +109,13 @@ Este modelo não apenas reproduz a estrutura dos primos, mas também redefine su
 > Não são apenas entes aritméticos, mas **vibrações fundamentais da hélice rotacional da realidade**.
 
 ---
+
+#### Nota: Conceito de Primalidade
+
+O presente trabalho utilizará um conceito de "primalidade" para designar **zonas de coerência energética** identificadas por estabilidade na estrutura quaternária. Essa definição **não coincide** com a primalidade clássica, baseada em indivisibilidade aritmética, estas são bem raras e de mais previsão avançada.
+
+Esse conceito foi explorado no *Experimento 17*, no qual demonstramos que o acoplamento de energia no espaço ressonante só ocorre em certas frequências que ativam estados rotacionais estáveis. Tais frequências definem **zonas de estabilidade energética**, nas quais ocorre a transferência efetiva de energia.
+
+Analogamente, no modelo quaternário aqui proposto, o número `n` do refido script é considerado "primal" se não apresenta instabilidade de decomposição — ou seja, se **não é energeticamente excitável** por produtos coerenciais de números menores.
+
+Esse critério define o que chamamos aqui de **primalidade estrutural**, compatível com zonas de ressonância rotacional da Teoria ERIЯƎ, e que aponta para uma compreensão mais profunda e geométrica da emergência dos números primos.
