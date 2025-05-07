@@ -4,7 +4,7 @@
 
 ## 1. Introdução
 
-Neste ensaio, propomos uma descrição teórica da gênese da topologia do universo percebido, partindo de uma estrutura mínima e coerente de formas geométricas fundamentais. Com base nos fundamentos estabelecidos na Gênese Topológica (Expansão Teórica 54) e em articulações anteriores sobre a emergência do tempo (ET 36) e do plano helicoidal (ET 43), buscamos aqui:
+Neste ensaio, propomos uma descrição teórica da gênese da topologia do universo percebido, partindo de uma estrutura mínima e coerente de formas geométricas fundamentais. Com base nos fundamentos estabelecidos na Gênese Topológica e em articulações anteriores sobre a emergência do tempo e do plano helicoidal, buscamos aqui:
 
 - Interpretar a estrutura 3+1 dimensional do universo como expressão de uma forma geométrica específica;
 - Relacionar essa forma a uma projeção coerencial de entidades topológicas fundamentais;
@@ -49,7 +49,7 @@ Estas propriedades fazem do helicoide uma **representação natural do tempo fí
 
 ---
 
-### 3.2 Origem Esférica da Ccoerência
+### 3.2 Origem Esférica da Coerência
 
 No modelo da gênese topológica, a esfera \( \mathbb{S}^2 \) representa o estado de máxima coerência formal, com simetria total. Esta simetria, ao ser perturbada, pode dar origem a formas com coerência parcial, como o toroide.
 

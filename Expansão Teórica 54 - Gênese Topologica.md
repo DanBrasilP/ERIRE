@@ -16,7 +16,7 @@ Propomos aqui uma formulação que trata essas geometrias como estados-limite de
 
 ## 2. Estrutura Formal do Sistema
 
-### 2.1 Espaço das formas
+### 2.1 Espaço das Formas
 
 Definimos o espaço das formas como um espaço vetorial real:
 
@@ -33,7 +33,7 @@ onde:
 
 ---
 
-### 2.2 Vetor dinâmico topológico
+### 2.2 Vetor Dinâmico Topológico
 
 O vetor de estado topológico é definido por:
 
@@ -123,7 +123,7 @@ Para cada \( x \in B \), a fibra \( \pi^{-1}(x) \cong F \), e existe um aberto \
 
 ---
 
-## 6.3. As formas matriciais como fibras
+## 6.3. As Formas Matriciais como Fibras
 
 Estabelecemos:
 
@@ -136,7 +136,7 @@ Cada geometria de Thurston será interpretada como uma variedade base \( B \) eq
 
 ---
 
-## 6.4. Fibrados específicos para geometrias de Thurston
+## 6.4. Fibrados Específicos para Geometrias de Thurston
 
 | Geometria                     | Fibrado                                  | Grupo de estrutura             |
 |------------------------------|------------------------------------------|-------------------------------|
@@ -151,7 +151,7 @@ Cada geometria de Thurston será interpretada como uma variedade base \( B \) eq
 
 ---
 
-## 6.5. Transição entre geometrias como transição de fibrados
+## 6.5. Transição Entre Geometrias Como Transição de Fibrados
 
 Definimos uma **família de fibrados parametrizada** por \( t \in \mathbb{R} \), onde:
 
@@ -169,7 +169,7 @@ O sistema de EDOs descrito previamente agora determina a **deformação contínu
 
 ---
 
-## 6.6. Seções e estados de coerência
+## 6.6. Seções e Estados de Coerência
 
 Uma **seção global \( \sigma: B \to E \)** representa um estado coerente de geometria. Os pontos críticos onde:
 
@@ -201,7 +201,7 @@ A **3-esfera \( \mathbb{S}^3 \)** é definida como o conjunto de pontos em \( \m
 \mathbb{S}^3 = \left\{ (x_1, x_2, x_3, x_4) \in \mathbb{R}^4 \;\middle|\; x_1^2 + x_2^2 + x_3^2 + x_4^2 = 1 \right\}
 \]
 
-#### Propriedades topológicas:
+#### Propriedades Topológicas:
 
 - **Compacta**, **sem borda**;
 - **Simplesmente conexa** (\( \pi_1(\mathbb{S}^3) = 0 \));
@@ -267,7 +267,7 @@ Este estado representa a **coerência total radial**, sem ruptura angular ou tor
 
 ---
 
-### 7.5. Função estrutural no sistema de geometrias
+### 7.5. Função Estrutural no Sistema de Geometrias
 
 - **Classe geradora de curvatura positiva**;
 - Atua como **ponto de origem reverso**: outras geometrias podem ser obtidas a partir da deformação ou quebra de sua simetria;
@@ -284,7 +284,7 @@ Trabalharemos com grupos de homologia singulares \( H_k(X; \mathbb{Z}) \) e coho
 
 ---
 
-### 8.1. Invariantes homológicos associados às formas matriciais
+### 8.1. Invariantes Homológicos Associados às Formas Matriciais
 
 Cada forma \( F_i \in \{ \mathbb{S}, \mathbb{T}, H, \bullet \} \) possui grupos de homologia próprios que refletem sua estrutura:
 
@@ -299,7 +299,7 @@ Essas estruturas são preservadas ou combinadas nas configurações dinâmicas d
 
 ---
 
-### 8.2. Evolução de classes homológicas sob \( \vec{\Theta}(t) \)
+### 8.2. Evolução de Classes Homológicas sob \( \vec{\Theta}(t) \)
 
 O vetor de estado topológico \( \vec{\Theta}(t) \) gera, para cada \( t \), uma variedade \( X_t \subseteq E_t \) com homologia definida por:
 
@@ -316,7 +316,7 @@ Por exemplo:
 
 ---
 
-### 8.3. Cohomologia e classes diferenciais no espaço \( E \)
+### 8.3. Cohomologia e Classes Diferenciais no Espaço \( E \)
 
 Se \( E \) é um fibrado suave com formas diferenciais bem definidas, podemos associar:
 
@@ -337,7 +337,7 @@ A cohomologia permite definir **classes características** que distinguem entre 
 
 ---
 
-### 8.4. Continuidade das classes sob a dinâmica \( \vec{\Theta}(t) \)
+### 8.4. Continuidade das Classes sob a Dinâmica \( \vec{\Theta}(t) \)
 
 Como as transições entre as geometrias são modeladas por um sistema contínuo de EDOs sobre \( \lambda_i(t) \), a evolução de classes homológicas também pode ser tratada como um processo contínuo:
 
@@ -349,7 +349,7 @@ Este comportamento pode ser representado como **variação contínua de classes*
 
 ---
 
-### 8.5. Ligação com o espaço das formas
+### 8.5. Ligação com o Espaço das Formas
 
 Definimos uma aplicação:
 
@@ -375,7 +375,7 @@ As **classes de cohomologia de De Rham** \( H^k_{\text{dR}}(E_t) \) representam 
 
 ---
 
-### 8.7. Classes características como detectores de geometria
+### 8.7. Classes Características como Detectores de Geometria
 
 Em fibrados principais \( G \to E \to B \), classes características (como **classe de Chern**, **classe de Euler**, **classe de Pontryagin**) são elementos da cohomologia de \( B \) que classificam diferentes equivalências de fibrados.
 
@@ -387,7 +387,7 @@ Associamos:
 
 ---
 
-### 8.8. Aplicações diretas ao sistema \( \vec{\Theta}(t) \)
+### 8.8. Aplicações Diretas ao Sistema \( \vec{\Theta}(t) \)
 
 Para cada valor \( t \), podemos calcular as classes cohomológicas de \( E_t \) de acordo com a fibra dominante:
 
@@ -398,7 +398,7 @@ Para cada valor \( t \), podemos calcular as classes cohomológicas de \( E_t \)
 
 ---
 
-### 8.9. Curvas cohomológicas no espaço de parâmetros
+### 8.9. Curvas Cohomológicas no Espaço de Parâmetros
 
 A evolução de \( \vec{\Theta}(t) \) define uma curva \( \gamma(t) \) no espaço das classes cohomológicas \( H^*(E_t) \), que pode ser tratada como:
 
@@ -413,7 +413,7 @@ Essa curva é contínua em regiões de transição suave, e **sofre descontinuid
 
 ---
 
-### 8.10. Interpretação geométrica
+### 8.10. Interpretação Geométrica
 
 As classes cohomológicas agem como **assinaturas diferenciais da forma dominante** e **rastros históricos** das transições estruturais de \( \vec{\Theta}(t) \). Elas servem para:
 
@@ -439,7 +439,7 @@ Perda do centro radial da esfera, surgindo um buraco com coerência angular — 
 H_1(\mathbb{S}^2) = 0 \quad \longrightarrow \quad H_1(\mathbb{T}^2) = \mathbb{Z}^2
 \]
 
-**Cohomologia diferencial:**
+**Cohomologia Diferencial:**
 - Classe de Chern muda de \( c_1 = 1 \) (Hopf) para \( c_1 = 0 \) (fibrado trivial);
 - Novas 1-formas fechadas não exatas surgem: \( H^1_{\text{dR}}(\mathbb{T}^2) = \mathbb{R}^2 \).
 
@@ -450,7 +450,7 @@ Surgem dois ciclos independentes (meridional e longitudinal), não retráteis à
 
 #### b) Transição: \( \mathbb{T}^2 \longrightarrow H \)
 
-**Interpretação geométrica:**  
+**Interpretação Geométrica:**  
 Rompimento da simetria angular do toroide por torção contínua — surgimento do helicoide.
 
 **Homologia:**
@@ -469,7 +469,7 @@ A torção contínua transforma o espaço fechado do toroide em uma forma aberta
 
 #### c) Transição: \( H \longrightarrow \bullet \)
 
-**Interpretação geométrica:**  
+**Interpretação Geométrica:**  
 Colapso total da estrutura, perda da dimensão efetiva — retorno ao ponto.
 
 **Homologia:**
@@ -487,7 +487,7 @@ A estrutura topológica se desfaz; todas as formas diferenciais desaparecem salv
 
 ---
 
-### 8.12. Encerramento da estrutura homológica e cohomológica
+### 8.12. Encerramento da Estrutura Homológica e Cohomológica
 
 Através dos três exemplos acima, fica demonstrado que o sistema \( \vec{\Theta}(t) \) é capaz de induzir transições topológicas reconhecíveis, com:
 
@@ -518,7 +518,7 @@ Estas formas são tratadas como **fibras típicas**, **geradoras homológicas** 
 
 ---
 
-### 9.1. Redutibilidade geométrica
+### 9.1. Redutibilidade Geométrica
 
 As 8 geometrias possíveis em variedades 3D compactas (segundo Thurston) são caracterizadas por combinações de:
 
@@ -537,7 +537,7 @@ Logo, as formas da base \( \mathcal{F} \) são **suficientes para gerar o espaç
 
 ---
 
-### 9.2. Completude homológica e cohomológica
+### 9.2. Completude Homológica e Cohomológica
 
 As formas \( \mathbb{S}, \mathbb{T}, H, \bullet \) abrangem as estruturas homológicas essenciais:
 
@@ -554,7 +554,7 @@ As classes cohomológicas também variam exclusivamente nos mesmos graus, com as
 
 ---
 
-### 9.3. Minimalidade estrutural
+### 9.3. Minimalidade Estrutural
 
 O conjunto \( \mathcal{F} \) é **estruturalmente minimalista**, no sentido de que:
 
@@ -568,7 +568,7 @@ Portanto, o sistema **é fechado** sob operações topológicas admissíveis no 
 
 ---
 
-### 9.4. Validação dentro de ZFC
+### 9.4. Validação Dentro de ZFC
 
 Todas as operações e construções feitas:
 
@@ -580,7 +580,7 @@ são compatíveis com os axiomas da teoria de conjuntos ZFC, e utilizam apenas c
 
 ---
 
-### 9.5. Conclusão desta justificativa
+### 9.5. Conclusão
 
 Portanto, podemos afirmar com base no desenvolvimento formal aqui apresentado que:
 
